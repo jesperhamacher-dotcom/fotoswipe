@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Fotoswipe",
+    "slug": "fotoswipe",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "ios": {
+      "bundleIdentifier": "de.jesper.fotoswipe"
+    },
+    "android": {
+      "package": "de.jesper.fotoswipe"
+    },
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Fotoswipe braucht Zugriff auf deine Fotos, damit du sie sortieren und löschen kannst.",
+          "savePhotosPermission": "Fotoswipe braucht Zugriff auf deine Fotos, um sie löschen zu können.",
+          "isAccessMediaLocationEnabled": false
+        }
+      ]
+    ]
+  }
+}
