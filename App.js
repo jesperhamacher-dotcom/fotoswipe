@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import {
   View, Text, Image, Animated, PanResponder, Dimensions, TouchableOpacity,
-  StyleSheet, ActivityIndicator, Alert, SafeAreaView, StatusBar,
+  StyleSheet, ActivityIndicator, Alert, StatusBar,
 } from 'react-native';
-import * as MediaLibrary from 'expo-media-library';
+import * as MediaLibrary from 'expo-media-library/legacy';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { width: W, height: H } = Dimensions.get('window');
@@ -12,6 +13,14 @@ const PAGE = 60;
 const KEPT_KEY = 'fotoswipe_kept_ids';
 
 export default function App() {
+  return (
+    <SafeAreaProvider>
+      <Fotoswipe />
+    </SafeAreaProvider>
+  );
+}
+
+function Fotoswipe() {
   const [permission, setPermission] = useState(null);
   const [assets, setAssets] = useState([]);
   const [index, setIndex] = useState(0);
@@ -160,7 +169,7 @@ export default function App() {
   const next = assets[index + 1];
 
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       <StatusBar barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.headerText}>
